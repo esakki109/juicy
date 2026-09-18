@@ -64,12 +64,12 @@ const corsOptions = {
       'http://localhost:5000',
       'capacitor://localhost',
       'https://juicee-30ie.onrender.com/',
-      'https://juicy-1.onrender.com//',
+      'https://juicyapp.in//',
       'https://juicee-30ie.onrender.com',
-      'https://juicy-1.onrender.com/',
-      'https://juicy-1.onrender.com',
+      'https://juicyapp.in/',
+      'https://juicyapp.in',
       'https://juicy.lcind.space',
-      'https://juicy-1.onrender.com/',
+      'https://juicyapp.in/',
       process.env.FRONTEND_URL || 'http://localhost:3000'
     ];
 
@@ -148,14 +148,14 @@ async function startServer() {
             'https://localhost',
             'capacitor://localhost',
             'https://juicy.lcind.space',
-            'https://juicy-1.onrender.com/',
-            'https://juicy-1.onrender.com',
+            'https://juicyapp.in/',
+            'https://juicyapp.in',
             'http://localhost:3000',
             'http://localhost:5000',
             'https://juicee-30ie.onrender.com',
             'https://juicy.lcind.space',
-            'https://juicy-1.onrender.com/',
-            'https://juicy-1.onrender.com//',
+            'https://juicyapp.in/',
+            'https://juicyapp.in//',
             process.env.FRONTEND_URL || 'http://localhost:3000'
           ];
 
@@ -896,6 +896,9 @@ async function startServer() {
 
           // Forward answer signal to the caller
           console.log(`📡 Forwarding answer signal to caller ${receiverId}`);
+          if (data.signal && typeof data.signal === 'object' && data.callId) {
+            data.signal.callId = data.callId;
+          }
           io.to(String(receiverId)).emit('callAccepted', data.signal);
           console.log(`✅ Answer signal sent successfully`);
         } catch (error) {

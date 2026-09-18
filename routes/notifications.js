@@ -260,7 +260,8 @@ router.post('/api/notifications/test-push', async (req, res) => {
             senderId: userId,
             senderName: 'Test Caller',
             callId: `test_call_${Date.now()}`,
-            channelId: 'call_notifications',
+            channelId: 'call_notifications_v3',
+            sound: 'receiver',
           }
         }
       : {
